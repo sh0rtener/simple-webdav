@@ -37,14 +37,22 @@ public class Folder : FileSystemUnit
 
     public void CopyTo(Folder folder)
     {
-        folder.AddFolder(new Folder(Name, Owners, Access, Parent));
+        var newFolder = this.MemberwiseClone() as Folder;
+        newFolder!.Parent = folder;
+        folder.AddFolder(newFolder);
         folder.Save();
+        newFolder.Save();
     }
 
     public override void Save()
     {
         if (!Directory.Exists(AbsolutePath))
             Directory.CreateDirectory(AbsolutePath);
+
+        foreach (var folder in Children)
+        {
+            folder.Save();
+        }
 
         foreach (var file in _files)
         {

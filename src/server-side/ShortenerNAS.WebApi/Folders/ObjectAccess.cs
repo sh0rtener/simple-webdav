@@ -2,9 +2,9 @@ namespace ShortenerNAS.WebApi.Folders;
 
 public enum ObjectAccess
 {
-    None = 0x000,
-    Read = 0x100,
-    ReadWrite = 0x110,
-    ReadExecute = 0x101,
-    ReadWriteExecute = 0x111,
+    None = 0b0000_0000,
+    Read = 0b0000_0001,
+    ReadWrite = 0b0000_0110,
+    ReadExecute = 0b0000_0101,
+    ReadWriteExecute = 0b0000_0111,
 }

@@ -1,13 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "IStB9DCeopU=",
+  "dgSpecHash": "GEmN28krA58=",
   "success": true,
   "projectFilePath": "/home/sh0rtener/projects/homelab/webdav/src/server-side/ShortenerNAS.WebApi/ShortenerNAS.WebApi.csproj",
   "expectedPackageFiles": [
+    "/home/sh0rtener/.nuget/packages/microsoft.aspnetcore.jsonpatch/9.0.11/microsoft.aspnetcore.jsonpatch.9.0.11.nupkg.sha512",
+    "/home/sh0rtener/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/9.0.11/microsoft.aspnetcore.mvc.newtonsoftjson.9.0.11.nupkg.sha512",
     "/home/sh0rtener/.nuget/packages/microsoft.aspnetcore.openapi/10.0.0/microsoft.aspnetcore.openapi.10.0.0.nupkg.sha512",
+    "/home/sh0rtener/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/sh0rtener/.nuget/packages/microsoft.extensions.apidescription.server/9.0.0/microsoft.extensions.apidescription.server.9.0.0.nupkg.sha512",
     "/home/sh0rtener/.nuget/packages/microsoft.openapi/2.3.0/microsoft.openapi.2.3.0.nupkg.sha512",
     "/home/sh0rtener/.nuget/packages/newtonsoft.json/13.0.4/newtonsoft.json.13.0.4.nupkg.sha512",
+    "/home/sh0rtener/.nuget/packages/newtonsoft.json.bson/1.0.2/newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "/home/sh0rtener/.nuget/packages/swashbuckle.aspnetcore/10.0.1/swashbuckle.aspnetcore.10.0.1.nupkg.sha512",
     "/home/sh0rtener/.nuget/packages/swashbuckle.aspnetcore.swagger/10.0.1/swashbuckle.aspnetcore.swagger.10.0.1.nupkg.sha512",
     "/home/sh0rtener/.nuget/packages/swashbuckle.aspnetcore.swaggergen/10.0.1/swashbuckle.aspnetcore.swaggergen.10.0.1.nupkg.sha512",

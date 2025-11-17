@@ -5,7 +5,7 @@ public class FolderFile : FileSystemUnit
     private string _originalPath;
     public Folder ParentDirectory { get; private set; }
     public string Extension { get; private set; }
-    public int SizeInMb => GetSizeInBytes() * 1024;
+    public int SizeInMb => GetSizeInBytes() / 1024;
     public bool IsExecutable { get; private set; }
 
     public FolderFile(string originalPath, string name, ObjectOwnersValue objectOwnersValue,
@@ -42,9 +42,9 @@ public class FolderFile : FileSystemUnit
 
     private int GetSizeInBytes()
     {
-        var length = File.ReadAllBytes(AbsolutePath).Length;
-        if (length == 0)
+        if (!File.Exists(AbsolutePath))
             return File.ReadAllBytes(_originalPath).Length;
+        var length = File.ReadAllBytes(AbsolutePath).Length;
 
         return length;
     }
@@ -52,7 +52,7 @@ public class FolderFile : FileSystemUnit
     protected override string GetPath()
     {
         var folders = ParentDirectory.AbsolutePath;
-        var path = Path.Combine(folders, $"/{Name}.{Extension}");
+        var path = folders + $"/{Name}.{Extension}";
 
         return path;
     }

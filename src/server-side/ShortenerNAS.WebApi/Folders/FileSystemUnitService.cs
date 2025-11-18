@@ -11,6 +11,7 @@ public class FileSystemUnitService
             new ObjectAccessValue(ObjectAccess.None, ObjectAccess.None, ObjectAccess.None), null);
         GetFoldersByPath(path, folder);
 
+        folder.SetAsParent();
         return folder;
     }
 
@@ -29,7 +30,7 @@ public class FileSystemUnitService
         var directories = Directory.GetDirectories(path);
         foreach (var directory in directories)
         {
-            var child = new Folder(directory, new ObjectOwnersValue("-", "-", "-"),
+            var child = new Folder(directory.Split("/")[^1], new ObjectOwnersValue("-", "-", "-"),
                 new ObjectAccessValue(ObjectAccess.None, ObjectAccess.None, ObjectAccess.None), null);
             GetFoldersByPath(directory, child);
 
@@ -51,7 +52,7 @@ public class FileSystemUnitService
             }
             var folderFile = new FolderFile(file, filename, new ObjectOwnersValue("-", "-", "-"),
                 new ObjectAccessValue(ObjectAccess.None, ObjectAccess.None, ObjectAccess.None), folder,
-                extension, false);
+                extension, FolderFile.IsExecutableFile(extension));
             folder.AddFile(folderFile);
         }
     }

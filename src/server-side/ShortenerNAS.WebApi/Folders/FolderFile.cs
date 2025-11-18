@@ -71,4 +71,10 @@ public class FolderFile : FileSystemUnit
         var path = GetPath();
         return File.Exists(path);
     }
+
+    public static bool IsExecutableFile(string extension)
+    {
+        List<string> executableExtensions = ["exe", "", "sh"];
+        return executableExtensions.Contains(extension);
+    }
 }

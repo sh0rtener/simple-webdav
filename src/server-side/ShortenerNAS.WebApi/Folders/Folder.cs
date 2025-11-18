@@ -36,6 +36,27 @@ public class Folder : FileSystemUnit
         _children.AddRange(folders);
     }
 
+    public Folder FindFolder(string[] parts)
+    {
+        var folder = MemberwiseClone() as Folder;
+        for (int i = 0; i < parts.Length; i++)
+        {
+            if (string.IsNullOrEmpty(parts[i]))
+                continue;
+            var parent = folder;
+            folder = GetChildFolder(folder!, parts[i]);
+            folder.Parent = parent;
+        }
+
+        return folder!;
+    }
+
+    private Folder GetChildFolder(Folder folder, string? part)
+    {
+        return folder.Children.FirstOrDefault(x => x.Name == part) ?? throw new
+            DirectoryNotFoundException(folder.AbsolutePath + "/" + part);
+    }
+
     public void CopyTo(Folder folder)
     {
         var newFolder = this.MemberwiseClone() as Folder;
@@ -66,6 +87,17 @@ public class Folder : FileSystemUnit
         if (!Directory.Exists(AbsolutePath))
             throw new DirectoryNotFoundException();
         Directory.Delete(AbsolutePath, true);
+    }
+
+    public void RemoveFile(FolderFile file)
+    {
+        _files.Remove(file);
+        file.Remove();
+    }
+    
+    public void SetAsParent()
+    {
+        Parent = null;
     }
 
     protected override string GetPath()

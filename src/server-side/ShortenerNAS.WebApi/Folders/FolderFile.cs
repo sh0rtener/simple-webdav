@@ -1,3 +1,6 @@
+using ShortenerNAS.WebApi.Folders.Exceptions;
+using ShortenerNAS.WebApi.Folders.Validations;
+
 namespace ShortenerNAS.WebApi.Folders;
 
 public class FolderFile : FileSystemUnit
@@ -12,6 +15,9 @@ public class FolderFile : FileSystemUnit
         ObjectAccessValue objectAccessValue, Folder parent, string extension, bool isExecutable = false) : base(name,
         objectOwnersValue, objectAccessValue)
     {
+        if (!new IsValidFileSystemUnitName().IsSatisfiedBy(originalPath))
+            throw new InvalidFileSystemUnitNameException();
+        
         _originalPath = originalPath;
         ParentDirectory = parent;
         Extension = extension;

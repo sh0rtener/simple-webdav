@@ -62,6 +62,8 @@ public class Folder : FileSystemUnit
 
     public override void Remove()
     {
+        if (!Directory.Exists(AbsolutePath))
+            throw new DirectoryNotFoundException();
         Directory.Delete(AbsolutePath, true);
     }
 

@@ -1,4 +1,6 @@
 using ShortenerNAS.WebApi.Common.Domain;
+using ShortenerNAS.WebApi.Folders.Exceptions;
+using ShortenerNAS.WebApi.Folders.Validations;
 
 namespace ShortenerNAS.WebApi.Folders;
 
@@ -11,6 +13,9 @@ public abstract class FileSystemUnit : Entity<Guid>
 
     public FileSystemUnit(string name, ObjectOwnersValue owners, ObjectAccessValue access)
     {
+        if (!new IsValidFileSystemUnitName().IsSatisfiedBy(name))
+            throw new InvalidFileSystemUnitNameException();
+        
         Name = name;
         Owners = owners;
         Access = access;

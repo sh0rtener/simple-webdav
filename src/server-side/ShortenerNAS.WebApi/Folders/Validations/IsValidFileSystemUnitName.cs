@@ -8,7 +8,8 @@ public class IsValidFileSystemUnitName : Specification<string>
 {
     public override Expression<Func<string, bool>> ToExpression()
     {
-        return x => !string.IsNullOrEmpty(x) && Regex.IsMatch(x, "^[a-zA-Z0-9_\\-\\.]+$") && x.Length > 0 &&
+        return x => x.Length > 0 // && !Regex.IsMatch(x, "^[a-zA-Z0-9_\\-\\.]+$") 
+                    &&
                     x.Length < 256;
     }
 }

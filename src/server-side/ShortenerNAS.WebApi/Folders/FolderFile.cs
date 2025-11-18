@@ -15,6 +15,7 @@ public class FolderFile : FileSystemUnit
         ObjectAccessValue objectAccessValue, Folder parent, string extension, bool isExecutable = false) : base(name,
         objectOwnersValue, objectAccessValue)
     {
+        Id = Guid.NewGuid();
         if (!new IsValidFileSystemUnitName().IsSatisfiedBy(originalPath))
             throw new InvalidFileSystemUnitNameException();
         
@@ -59,6 +60,8 @@ public class FolderFile : FileSystemUnit
     {
         var folders = ParentDirectory.AbsolutePath;
         var path = folders + $"/{Name}.{Extension}";
+        if (string.IsNullOrEmpty(Extension))
+            path = folders + $"/{Name}";
 
         return path;
     }

@@ -8,6 +8,7 @@ public class Folder : FileSystemUnit
     public Folder(string name, ObjectOwnersValue owners, ObjectAccessValue access, Folder? parent) : base(name, owners,
         access)
     {
+        Id = Guid.NewGuid();
         Parent = parent;
     }
 
